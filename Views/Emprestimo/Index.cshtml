@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EmprestimoModel> 
+
+<div class="container">
+    <div class ="d-flex justify-content-between align-itens-center mb-5">
+        <h1>Emprestimos</h1>
+        <a class="btn btn-success w-40 " asp-controller="Emprestimo" asp-action="Cadastrar">Cadastrar Novo Emprestimo</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Recebedor</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">Livro</th>  
+                <th scope="col">Ultima Atualização</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null)
+            {
+                foreach(var emprestimo in Model)
+                {
+                    <tr>
+                        <th scope="row">@emprestimo.Recebedor</th>
+                        <td>@emprestimo.Fornecedor</td>
+                        <td>@emprestimo.NomeLivro</td>
+                        <td>@emprestimo.DataUltimaAtualizacao</td>
+                            <td> <button class="btn btn-outline-warning w-10" > Atualizar </button> </td>
+                            <td><button type="submit" class="btn btn-outline-danger w-10 " method="Delete" asp-controller="Emprestimo" asp-action="Excluir">Excluir</button></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
